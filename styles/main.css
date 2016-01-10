@@ -1,0 +1,49 @@
+body {
+  background-color: #99C755;
+}
+
+.board-title {
+  text-align: center;
+  color: #FDFDFD;
+  margin-bottom: 20px;
+}
+
+.board {
+  margin: auto;
+  width: 1000px;
+  height: 250px;
+  position: relative;
+}
+
+.board-container {
+  background-color: #FDFDFD;
+  border: 1px solid #319A31;
+  border-radius: 5px;
+  height: 200px;
+  padding-top: 36px;
+  text-align: center;
+  font-size: 100px;
+
+  position: absolute;
+  top: 15px;
+
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.board-result {
+  text-align: center;
+  color: #FDFDFD;
+}
+
+.board-levels {
+  text-align: center;
+  color: #FDFDFD;
+}
+
+.board-launch {
+  text-align: center;
+  margin-top: 30px;
+}

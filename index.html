@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="gameOfShellsRepo">
+<head>
+  <title>Game of Shells</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+  <!-- External Library -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="scripts/logic_controller.js"></script>
+</head>
+
+<body ng-controller="LogicCtrl" ng-cloak>
+  <div class="container">
+    <h1 class="board-title">Games of Shells</h1>
+
+    <!-- board section -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="board">
+          <div class="board-container" ng-repeat="container in containers" ng-style="{ 'width': container.width, 'left': container.positionX }">
+            <span ng-if="container.ball && selectedContainer" class="glyphicon glyphicon-remove"></span>
+            <button type="button" name="button" class="btn btn-danger btn-lg" ng-show="showBet" ng-click="selectBall(container)">Here</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- result section -->
+    <div class="row board-result">
+      <h2 class="board-question" ng-show="showBet && !selectedContainer">Where is the cross?</h2>
+      <h2>
+        <span ng-show="selectedContainer == 'lose'">You lose!</span>
+        <span ng-show="selectedContainer == 'win'">You win!</span>
+      </h2>
+    </div>
+
+    <!-- levels section -->
+    <div class="row board-levels" ng-show="selectedContainer">
+      <h2>Spice it up, change the difficulty:</h2>
+      <div class="col-sm-4 col-sm-offset-2">
+        <h3>Number of boxes: {{nbContainer}}</h3>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-success" ng-click="changeLevels('container',-1)">-</button>
+          <button type="button" class="btn btn-success" ng-click="changeLevels('container',1)">+</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Number of shuffles: {{nbShuffle}}</h3>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-success" ng-click="changeLevels('shuffle',-1)">-</button>
+          <button type="button" class="btn btn-success" ng-click="changeLevels('shuffle',1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- launch -->
+    <div class="row board-launch" ng-show="selectedContainer">
+      <button type="button" name="button" class="btn btn-danger btn-lg" ng-click="shuffleContainers()">Shuffle !</button>
+    </div>
+  </div>
+
+</body>
+</html>
